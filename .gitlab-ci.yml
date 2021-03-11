@@ -1,0 +1,15 @@
+
+image: registry.gitlab.com/xa-online-2021-march/builder:latest
+
+stages:
+  - provision-servers
+
+provision-servers:
+  stage: provision-servers
+  script:
+    - cat ${DEPLOY_KEY} > deploy.key
+    - chmod 400 deploy.key
+    - export ANSIBLE_CONFIG=ansible.cfg
+    - ansible-lint playbook.yml
+    - ansible-playbook -i hosts.yml playbook.yml
+

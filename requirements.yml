@@ -1,0 +1,6 @@
+- src: https://github.com/geerlingguy/ansible-role-nginx.git
+  version: 2.6.0
+  name: geerlingguy.nginx
+- src: https://github.com/geerlingguy/ansible-role-mysql
+  version: 2.9.0
+  name: geerlingguy.mysql
