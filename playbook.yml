@@ -2,9 +2,10 @@
 - hosts: all
   become: true
   tasks:
-	- name: "Ansible | Print a variable"
-		debug:
-			msg: "The operating system is {{ ansible_distribution }}"
+    - name: "Ansible | Print a variable"
+        debug:
+	msg: "The operating system is {{ ansible_distribution }}"
+    
     - debug:
         msg: "Yeah!"
 
