@@ -23,7 +23,7 @@
       with_items:
         - first
         - second    
-    - name: Nginx
+    - name: Install Nginx
       apt:
-	name: "{{ item }}"
+	name: nginx
 	force_apt_get: true
