@@ -2,19 +2,24 @@
 - hosts: all
   become: true
   tasks:
-    - debug:
-        msg: "Yeah!"
-
-- pip:
-  name: PyMySQL
-
-- apt:
-  name: mysql-server
-  force_apt_get: true
-
-- mysql_db:
-    name: "{{ item }}"
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-  with_itmes:
-     - first
-     - second
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600      
+    - name: Install libraries
+      apt:
+        name: "{{ item }}"        
+        force_apt_get: true
+      with_items: 
+        - mysql-server
+        - python-pymysql
+        - python3-pymysql
+        - python-apt
+        - python3-apt
+    - name: Add databases
+      mysql_db:
+        name: "{{ item }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+      with_items:
+        - first
+        - second    
