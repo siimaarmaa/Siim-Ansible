@@ -4,3 +4,17 @@
   tasks:
     - debug:
         msg: "Yeah!"
+
+- pip:
+  name: PyMySQL
+
+- apt:
+  name: mysql-server
+  force_apt_get: true
+
+- mysql_db:
+    name: "{{ item }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  with_itmes:
+     - first
+     - second
